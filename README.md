@@ -2,6 +2,17 @@
 
 This repository contains the material that was used for the FEniCSx tutorial at the FEniCS 2022 conference.
 
+## Installation
+Running 
+```bash
+docker build -t checkpointing_image .
+```
+to build a compatible image, and then
+```bash
+docker run -ti -v ${PWD}:/root/shared -w /root/shared --entrypoint=/bin/bash --name=checkpoint_container -p 8080:8888 checkpointing_image
+jupyter lab --ip 0.0.0.0 --no-browser --allow-root
+```
+
 ## Developer notes
 
 ### Rendering the HTML presentation files directly on Github

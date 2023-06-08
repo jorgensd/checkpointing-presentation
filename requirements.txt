@@ -1,0 +1,3 @@
+ipyparallel
+git+https://github.com/jorgensd/adios4dolfinx/
+nbconvert
