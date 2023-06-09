@@ -13,8 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     container:
-      image: dolfinx/lab:nightly
-
+      image: ghcr.io/fenics/dolfinx/lab:nightly
     env:
       PUBLISH_FILE: presentation_checkpoint.html
       PKG_CONFIG_PATH: /usr/local/dolfinx-real/lib/pkgconfig:${PKG_CONFIG_PATH}
