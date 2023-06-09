@@ -30,11 +30,11 @@ jobs:
         run: python3 -m pip install -r requirements.txt
 
       - name: Build presentation
-        run: jupyter nbconvert checkpointing.ipynb --to html --template reveal
+        run: jupyter nbconvert checkpointing.ipynb --to html --template reveal --output="index" 
 
       - name: Upload presentation as artifact
         uses: actions/upload-artifact@v3
         with:
           name: presentation
-          path: presentation-checkpointing.html
+          path: index.html
           if-no-files-found: error
