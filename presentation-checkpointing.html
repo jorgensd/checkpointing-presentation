@@ -15204,6 +15204,30 @@ div.row::after {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Input/Output-formats-for-Finite-Element-software">Input/Output formats for Finite Element software<a class="anchor-link" href="#Input/Output-formats-for-Finite-Element-software">&#182;</a></h1><h2 id="FEM-software">FEM software<a class="anchor-link" href="#FEM-software">&#182;</a></h2><ul>
+<li>Most finite element software use their own format for inputting/outputting meshes and functions</li>
+<li>No general consensus on what format to use</li>
+</ul>
+<h2 id="Post-processing">Post-processing<a class="anchor-link" href="#Post-processing">&#182;</a></h2><ul>
+<li>Most formats are based on <a href="https://vtk.org/">VTK</a> in some shape or form</li>
+<li>Many different file formats support <code>vtk</code><ul>
+<li><code>.pvd</code>-files (<code>xml</code>-based)</li>
+<li><code>.xdmf</code>-files (<code>xml</code>+binary (<code>.h5</code>)</li>
+<li><code>.bp</code>-files (binary files in folder)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="What-is-checkpointing?">What is checkpointing?<a class="anchor-link" href="#What-is-checkpointing?">&#182;</a></h1><blockquote>
 <p>Checkpointing refers to the ability to store the state of a computation in a way that allows it be continued at a later time without changing the computation’s behavior [1]</p>
 </blockquote>
@@ -15233,6 +15257,27 @@ div.row::after {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>[1] Schulz, M. (2011). Checkpointing. In: Padua, D. (eds) Encyclopedia of Parallel Computing. Springer, Boston, MA. <a href="https://doi.org/10.1007/978-0-387-09766-4_62">10.1007/978-0-387-09766-4_62</a></p>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Why-separate-post-processing-and-checkpointing?">Why separate post-processing and checkpointing?<a class="anchor-link" href="#Why-separate-post-processing-and-checkpointing?">&#182;</a></h1><p>The post-processing landscape keeps on changing</p>
+<ul>
+<li>Plain text formats are not scalable</li>
+<li>Formats go in and out of fashion</li>
+<li>Requirements for visualization and internal representation of data differs</li>
+</ul>
+<div>
+<p style="text-align:center;"><img src="figures/N1curl.png" width="800">
+     <figcaption>A basis function for Degree 1 Nédélec (first kind) on a triangle from  <a href="https://defelement.com/elements/examples/triangle-N1curl-1.html">DefElement.</a> </figcaption>
+</div>
 
 </div>
 </div>
@@ -15324,7 +15369,7 @@ div.row::after {
 
 </div>
 
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="fragment" ><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15372,7 +15417,7 @@ MPI.COMM_WORLD.rank=2, MPI.COMM_WORLD.size=3
 
 </div>
 
-</div></section></section><section ><section >
+</div></div></section></section><section ><section >
 <div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15453,7 +15498,7 @@ snapshot_checkpoint_write(u, scp_file)
 </div>
 </div>
 
-</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="fragment" ><div  class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15497,7 +15542,7 @@ snapshot_checkpoint_write(u, scp_file)
 
 </div>
 
-</div></section></section><section ><section >
+</div></div></section></section><section ><section >
 <div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15568,9 +15613,20 @@ assert(np.allclose(u.x.array, v.x.array))
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="ADIOS4DOLFINx-is-a-package-for-checkpointing">ADIOS4DOLFINx is a package for checkpointing<a class="anchor-link" href="#ADIOS4DOLFINx-is-a-package-for-checkpointing">&#182;</a></h1><ul>
-<li>Implemented in Python with <a href="https://adios2.readthedocs.io/en/latest/">ADIOS2</a></li>
+<li>Implemented in Python with <a href="https://adios2.readthedocs.io/en/latest/">ADIOS2</a> [2]</li>
 <li>Available at: <a href="https://github.com/jorgensd/adios4dolfinx/">https://github.com/jorgensd/adios4dolfinx/</a></li>
 </ul>
+
+</div>
+</div>
+</div>
+</div><div class="fragment" >
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Features">Features<a class="anchor-link" href="#Features">&#182;</a></h2><ul>
 <li>Snapshot checkpointing</li>
 <li>Recoverable checkpointing</li>
@@ -15605,7 +15661,19 @@ assert np.allclose(v.x.array, u.x.array)
 </div>
 </div>
 
-</div></section></section><section ><section >
+</div>
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>[2] W.F. Godoy, et al. <em>ADIOS 2: The Adaptable Input Output System. A framework for high-performance data management</em>, SoftwareX, Volume 12, 2020, <a href="https://doi.org/10.1016/j.softx.2020.100561">10.1016/j.softx.2020.100561</a></p>
+
+</div>
+</div>
+</div>
+</div></div></section></section><section ><section >
 <div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15715,7 +15783,74 @@ adx.write_function(u, checkpoint_file, engine=&quot;BP4&quot;)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Cell-permutations-are-used-to-consistently-orient-any-function-space-in-parallel-%5B2%5D">Cell-permutations are used to consistently orient any function space in parallel [2]<a class="anchor-link" href="#Cell-permutations-are-used-to-consistently-orient-any-function-space-in-parallel-%5B2%5D">&#182;</a></h1>
+<h1 id="Required-data-structures">Required data-structures<a class="anchor-link" href="#Required-data-structures">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide-input">
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>  string   CellType         attr   = &#34;quadrilateral&#34;
+  int32_t  Degree           attr   = 1
+  int32_t  LagrangeVariant  attr   = 1
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div  class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide-input">
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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"
+class="
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section ><section >
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Cell-permutations-are-used-to-consistently-orient-any-finite-element-in-parallel-%5B3%5D">Cell-permutations are used to consistently orient any finite element in parallel [3]<a class="anchor-link" href="#Cell-permutations-are-used-to-consistently-orient-any-finite-element-in-parallel-%5B3%5D">&#182;</a></h1><div>
+<p style="text-align:center;"><img src="figures/doforientation.png" width="600">
+</div>
+
 </div>
 </div>
 </div>
@@ -15753,10 +15888,7 @@ adx.write_function(u, checkpoint_file, engine=&quot;BP4&quot;)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div>
-<p style="text-align:center;"><img src="figures/dof_orientation.png" width="300">
-</div>
-<p>[2] M.W. Scroggs, J.S. Dokken, C.N. Richardson, and G.N. Wells. 2022. <em>Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes</em> ACM Trans. Math. Softw. 48, 2, <a href="https://doi.org/10.1145/3524456">10.1145/3524456</a></p>
+<p>[3] M.W. Scroggs, J.S. Dokken, C.N. Richardson, and G.N. Wells. 2022. <em>Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes</em> ACM Trans. Math. Softw. 48, 2, <a href="https://doi.org/10.1145/3524456">10.1145/3524456</a></p>
 
 </div>
 </div>
@@ -15804,47 +15936,54 @@ adx.write_function(u, checkpoint_file, engine=&quot;BP4&quot;)
 
 </div>
 
-</div></section></section><section ><section >
+</div><div class="fragment" >
 <div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="What-is-the-optimal-format?">What is the optimal format?<a class="anchor-link" href="#What-is-the-optimal-format?">&#182;</a></h1><h2 id="FEM-software">FEM software<a class="anchor-link" href="#FEM-software">&#182;</a></h2><ul>
-<li>Most finite element software use their own format for inputting/outputting meshes and functions</li>
-<li>No general consensus on what format to use</li>
+<h1 id="All-communication-is-done-using-MPI-neighbourhood-communicators">All communication is done using MPI neighbourhood communicators<a class="anchor-link" href="#All-communication-is-done-using-MPI-neighbourhood-communicators">&#182;</a></h1><ul>
+<li>Avoids all <code>MPI_Alltoall</code> and <code>MPI_Alltoallv</code> communications</li>
+<li>Scales better with increasing number of processes [4]</li>
 </ul>
-<h2 id="Post-processing">Post-processing<a class="anchor-link" href="#Post-processing">&#182;</a></h2><ul>
-<li>Most formats are based on <a href="https://vtk.org/">VTK</a> in some shape or form</li>
-<li>Many different file formats support <code>vtk</code><ul>
-<li><code>.pvd</code>-files (<code>xml</code>-based)</li>
-<li><code>.xdmf</code>-files (<code>xml</code>+binary (<code>.h5</code>)</li>
-<li><code>.bp</code>-files (binary files in folder)</li>
-</ul>
-</li>
-</ul>
+<p>[4] C. Richardson, G.N. Wells <em>Scalable MPI in FEniCS-dolfinx</em>  FEniCS 22'</p>
 
 </div>
 </div>
 </div>
-</div><div class="fragment" ><div  class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></div></section></section><section ><section >
+<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Further-work">Further work<a class="anchor-link" href="#Further-work">&#182;</a></h1><ul>
+<li>Move implementation into C++ and DOLFINx<ul>
+<li>First step in <a href="https://github.com/FEniCS/dolfinx/pull/2618">PR 2618</a></li>
+</ul>
+</li>
+<li>Add capability to store <code>MeshTags</code> in checkpointing files</li>
+</ul>
+<h1 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h1><ul>
+<li>A module for <em>snapshot</em> and proper checkpoints for DOLFINx</li>
+<li>Works for any finite element in DOLFINx in serial and parallel</li>
+<li>Leverages ADIOS2 for parallel IO</li>
+</ul>
+<div class="row">
+  <div class="column">
+    <img src="figures/fenics_banner.png" style="width:100%">
+    </div>
+  <div class="column">
+   <img src="figures/logo.png" width="100%">
+   </div>
+</div>
 
-     </div>
 </div>
 </div>
 </div>
-
-</div></div></section></section>
+</div></section></section>
 </div>
 </div>
 </body>
