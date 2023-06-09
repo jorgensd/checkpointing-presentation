@@ -1,0 +1,41 @@
+name: Build presentation
+
+on:
+  push:
+    branches:
+      - "**"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    container:
+      image: dolfinx/lab:nightly
+
+    env:
+      PUBLISH_FILE: presentation_checkpoint.html
+      PKG_CONFIG_PATH: /usr/local/dolfinx-real/lib/pkgconfig:${PKG_CONFIG_PATH}
+      PETSC_DIR: /usr/local/petsc/,
+      PETSC_ARCH: linux-gnu-real-32
+      IPP_NONINTERACTIVE: 1
+      PYTHONPATH: /usr/local/lib/python3/dist-packages:/usr/local/dolfinx-real/lib/python3.10/dist-packages:${PYTHONPATH}
+      LD_LIBRARY_PATH:/usr/local/dolfinx-real/lib:${LD_LIBRARY_PATH}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: python3 -m pip install -r requirements.txt
+
+      - name: Build presentation
+        run: jupyter nbconvert checkpointing.ipynb --to html --template reveal
+
+      - name: Upload presentation as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: presentation
+          path: ${{ env.PUBLISH_DIR }}
+          if-no-files-found: error
