@@ -35,7 +35,7 @@ jobs:
         # docs artifact is uploaded by build-docs job
         uses: actions/download-artifact@v3
         with:
-          name: presnetation
+          name: presentation
           path: "./public"
   
       - name: Upload artifact
