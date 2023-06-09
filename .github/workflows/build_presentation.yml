@@ -30,7 +30,7 @@ jobs:
         run: python3 -m pip install -r requirements.txt
 
       - name: Build presentation
-        run: jupyter nbconvert checkpointing.ipynb --to html --template reveal "--TagRemovePreprocessor.remove_input_tags={\'remove-input\', \'hide-input\'}", --output="index" 
+        run: jupyter nbconvert checkpointing.ipynb --to html --template reveal --TagRemovePreprocessor.remove_input_tags="{'remove-input', 'hide-input'}" --output="index"
 
       - name: Upload presentation as artifact
         uses: actions/upload-artifact@v3
