@@ -36,5 +36,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: presentation
-          path: index.html
+          path: .
           if-no-files-found: error
