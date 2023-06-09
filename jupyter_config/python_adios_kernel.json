@@ -16,6 +16,7 @@
         "PETSC_DIR": "/usr/local/petsc/",
         "PETSC_ARCH": "linux-gnu-real-32",
         "PYTHONPATH": "/usr/local/lib/python3/dist-packages:/usr/local/dolfinx-real/lib/python3.10/dist-packages:$PYTHONPATH",
-        "LD_LIBRARY_PATH": "/usr/local/dolfinx-real/lib:$LD_LIBRARY_PATH"
+        "LD_LIBRARY_PATH": "/usr/local/dolfinx-real/lib:$LD_LIBRARY_PATH",
+        "IPP_NONINTERACTIVE": "1"
     }
 }

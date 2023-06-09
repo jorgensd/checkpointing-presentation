@@ -7,5 +7,6 @@ ADD jupyter_config/python_adios_kernel.json /usr/local/share/jupyter/kernels/pyt
 ENV PKG_CONFIG_PATH=/usr/local/dolfinx-real/lib/pkgconfig:$PKG_CONFIG_PATH
 ENV PETSC_DIR=/usr/local/petsc/,
 ENV PETSC_ARCH=linux-gnu-real-32
+ENV IPP_NONINTERACTIVE=1
 ENV PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/dolfinx-real/lib/python3.10/dist-packages:$PYTHONPATH
 ENV LD_LIBRARY_PATH=/usr/local/dolfinx-real/lib:$LD_LIBRARY_PATH
