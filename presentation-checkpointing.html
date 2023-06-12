@@ -15829,7 +15829,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Cell-permutations-are-used-to-consistently-orient-any-finite-element-in-parallel-%5B3%5D">Cell-permutations are used to consistently orient any finite element in parallel [3]<a class="anchor-link" href="#Cell-permutations-are-used-to-consistently-orient-any-finite-element-in-parallel-%5B3%5D">&#182;</a></h1><div>
+<h1 id="Cell-permutations-are-used-to-consistently-orient-any-finite-element-in-parallel-%5B3%5D">Cell-permutations are used to consistently orient any finite element in parallel <a name="cite_ref-3" /><a href="#cite_note-3"><sup>[3]</sup></a><a class="anchor-link" href="#Cell-permutations-are-used-to-consistently-orient-any-finite-element-in-parallel-%5B3%5D">&#182;</a></h1><div>
 <p style="text-align:center;"><img src="figures/doforientation.png" width="500">
 </div>
 
@@ -15870,7 +15870,7 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>[3] M.W. Scroggs, J.S. Dokken, C.N. Richardson, and G.N. Wells. 2022. <em>Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes</em> ACM Trans. Math. Softw. 48, 2, <a href="https://doi.org/10.1145/3524456">10.1145/3524456</a></p>
+<p><a name="cite_note-3"></a><a href="#cite_ref-3">[3]</a> M.W. Scroggs, J.S. Dokken, C.N. Richardson, and G.N. Wells. 2022. <em>Construction of Arbitrary Order Finite Element Degree-of-Freedom Maps on Polygonal and Polyhedral Cell Meshes</em> ACM Trans. Math. Softw. 48, 2, <a href="https://doi.org/10.1145/3524456">10.1145/3524456</a></p>
 
 </div>
 </div>
@@ -15927,9 +15927,12 @@ class="
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="All-communication-is-done-using-MPI-neighbourhood-communicators">All communication is done using MPI neighbourhood communicators<a class="anchor-link" href="#All-communication-is-done-using-MPI-neighbourhood-communicators">&#182;</a></h1><ul>
 <li>Avoids all <code>MPI_Alltoall</code> and <code>MPI_Alltoallv</code> communications</li>
-<li>Scales better with increasing number of processes [4]</li>
+<li>Scales better with increasing number of processes<a name="cite_ref-4"></a><a href="#cite_note-4"><sup>[4]</sup></a></li>
 </ul>
-<p>[4] C. Richardson, G.N. Wells <em>Scalable MPI in FEniCS-dolfinx</em>  FEniCS 22'</p>
+<div>
+<p style="text-align:center;"><img src="figures/chris_figure.png" width="400">
+</div>
+<p><a name="cite_note-4"></a><a href="#cite_ref-4">[4]</a>  C. Richardson, G.N. Wells <em>Scalable MPI in FEniCS-dolfinx</em>  FEniCS 22'</p>
 
 </div>
 </div>
@@ -16015,7 +16018,7 @@ class="
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>INFO:ipyparallel.cluster.cluster.1686398937-n39y:Starting 2 engines with &lt;class &#39;ipyparallel.cluster.launcher.MPIEngineSetLauncher&#39;&gt;
+<pre>INFO:ipyparallel.cluster.cluster.1686580696-v7k6:Starting 2 engines with &lt;class &#39;ipyparallel.cluster.launcher.MPIEngineSetLauncher&#39;&gt;
 </pre>
 </div>
 </div>
@@ -16029,7 +16032,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">px</span>
@@ -16060,6 +16063,18 @@ print(f&quot;L^2-error {dolfinx.fem.assemble_scalar(L2_error)}&quot;)
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>%px:   0%|          | 0/2 [00:00&lt;?, ?tasks/s]</pre>
+</div>
+
+</div>
 <div class="jp-OutputArea-child">
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
